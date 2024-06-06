@@ -13,16 +13,32 @@
         android:theme="@style/Theme.DocReserva"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.DocReserva">
+            android:name=".ui.theme.activity.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.theme.activity.SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.DocReserva"/>
+        <activity
+            android:name=".ui.theme.activity.RegisterActivity"
+            android:exported="false"
+
+            android:theme="@style/Theme.DocReserva"/>
+        <activity
+            android:name=".ui.theme.activity.OtpVerificationActivity"
+            android:exported="false"
+
+            android:theme="@style/Theme.DocReserva"/>
     </application>
 
 </manifest>
