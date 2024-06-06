@@ -1,5 +1,7 @@
 package com.example.docreserva
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -14,18 +16,20 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.docreserva.ui.theme.DocReservaTheme
 
 class MainActivity : ComponentActivity() {
+
+
+    companion object{
+        @JvmStatic
+        fun start(context: Context) {
+            val starter = Intent(context, MainActivity::class.java)
+
+            context.startActivity(starter)
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            DocReservaTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
         }
     }
 }
