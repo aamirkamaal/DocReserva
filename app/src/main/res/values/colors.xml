@@ -8,5 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="app_theme_color">#248479</color>
+    <color name="app_theme_dark_color">#174666</color>
     <color name="gray">#A2A0A0</color>
+    <color name="background_color">#F5F7F8</color>
+
 </resources>
