@@ -2,19 +2,16 @@ package com.example.docreserva.ui.theme.fragment
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
-import androidx.compose.foundation.lazy.grid.LazyGridItemSpanScope
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -61,8 +58,8 @@ fun HomeFragment() {
     val mediumFontFamily = FontFamily(Font(R.font.montserrat_medium))
 
     LazyVerticalGrid(columns = GridCells.Fixed(4),
-        modifier = Modifier
-            .padding(16.dp)
+        modifier = Modifier.background(colorResource(id = R.color.background_color))
+
     ) {
 
         item(span = {
@@ -82,7 +79,7 @@ fun HomeFragment() {
                         .clip(CircleShape))
                 Text(
                     text = "hi, Christopher", modifier = Modifier.constrainAs(userName) {
-                        top.linkTo(profileImage.top, margin = 5.dp)
+                        top.linkTo(profileImage.top, margin =8.dp)
                         start.linkTo(profileImage.end, margin = 10.dp)
                     }, style = TextStyle(
                         fontFamily = boldFontFamily,
@@ -93,7 +90,7 @@ fun HomeFragment() {
                 )
                 Text(
                     text = "Good Morning", modifier = Modifier.constrainAs(greeting) {
-                        top.linkTo(userName.bottom, margin = 5.dp)
+                        top.linkTo(userName.bottom, margin =8.dp)
                         start.linkTo(userName.start)
                     }, style = TextStyle(
                         fontFamily = mediumFontFamily,
@@ -167,7 +164,7 @@ fun HomeFragment() {
                         .constrainAs(banner) {
                             top.linkTo(searchBox.bottom, margin = 20.dp)
                             start.linkTo(parent.start, margin = 7.dp)
-                            end.linkTo(parent.end, margin = 5.dp)
+                            end.linkTo(parent.end, margin =8.dp)
                             width = Dimension.fillToConstraints
 
                         }
@@ -195,7 +192,17 @@ fun HomeFragment() {
         }
 
         items(sampleItems.size) { index ->
-            GridItem(item = sampleItems[index])
+            ItemDoctorCategory(item = sampleItems[index])
+        }
+        item(span = {
+            GridItemSpan(maxLineSpan)
+        }) {
+
+            ItemDoctorDetails(
+                modifier = Modifier
+                    .padding(16.dp) // Outer padding (like margin)
+                    .fillMaxWidth()
+            )
         }
     }
 
@@ -203,7 +210,7 @@ fun HomeFragment() {
 }
 
 @Composable
-fun GridItem(item: DocModel) {
+fun ItemDoctorCategory(item: DocModel) {
 
     val boldFontFamily = FontFamily(Font(R.font.montserrat_bold))
     val mediumFontFamily = FontFamily(Font(R.font.montserrat_medium))
@@ -226,4 +233,105 @@ fun GridItem(item: DocModel) {
     }
 }
 
+@Composable
+fun ItemDoctorDetails(modifier: Modifier = Modifier) {
+    val boldFontFamily = FontFamily(Font(R.font.montserrat_bold))
+    val mediumFontFamily = FontFamily(Font(R.font.montserrat_medium))
+
+    ConstraintLayout(
+        modifier = modifier.background(
+            color = colorResource(id = R.color.white),
+            shape = RoundedCornerShape(12.dp)
+        )
+    ) {
+        val (docProfile, name, docDegree, category, experience,location) = createRefs()
+        Image(
+            painter = painterResource(id = R.drawable.doctor1),
+            contentDescription = "",
+            modifier = Modifier
+                .constrainAs(docProfile) {
+                    top.linkTo(parent.top, 20.dp)
+                    start.linkTo(parent.start, 10.dp)
+                    bottom.linkTo(parent.bottom, 20.dp)
+                }
+                .size(150.dp)
+        )
+        Text(
+            text = "Dr denies Martine",
+            modifier = Modifier.constrainAs(name) {
+                start.linkTo(docProfile.end)
+                top.linkTo(docProfile.top)
+            },
+            style = TextStyle(
+                fontFamily = boldFontFamily,
+                fontWeight = FontWeight(400),
+                color = colorResource(id = R.color.app_theme_color)
+            )
+        )
+        Text(
+            text = "MBBS,MD",
+            modifier = Modifier.constrainAs(docDegree) {
+                top.linkTo(name.bottom,8.dp)
+                start.linkTo(name.start)
+            },
+            style = TextStyle(
+                fontFamily = boldFontFamily,
+                fontWeight = FontWeight(400),
+                color = colorResource(id = R.color.app_theme_color)
+            )
+        )
+        Text(
+            text = "Cardiologist",
+            modifier = Modifier.constrainAs(category) {
+                top.linkTo(docDegree.bottom,8.dp)
+                start.linkTo(docDegree.start)
+            },
+            style = TextStyle(
+                fontFamily = boldFontFamily,
+                fontWeight = FontWeight(400),
+                color = colorResource(id = R.color.app_theme_color)
+            )
+        )
+
+        Text(
+            text = "42 year experience",
+            modifier = Modifier.constrainAs(experience) {
+                top.linkTo(category.bottom,8.dp)
+                start.linkTo(category.start)
+            },
+            style = TextStyle(
+                fontFamily = mediumFontFamily,
+                fontWeight = FontWeight.W400,
+                color = colorResource(id = R.color.gray),
+            )
+        )
+        Row(
+            modifier = Modifier
+                .constrainAs(location) {
+                    top.linkTo(experience.bottom,8.dp)
+                    start.linkTo(category.start,0.dp)
+                }
+
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.location),
+                contentDescription = null,
+
+                modifier = Modifier.size(16.dp)
+
+            )
+            Text(
+                text = "Apollo hospital, west ham",
+                style = TextStyle(
+                    fontFamily = mediumFontFamily,
+                    fontWeight = FontWeight.W400,
+                    color = colorResource(id = R.color.gray),
+                    fontSize = 12.sp
+                )
+            )
+
+
+        }
+    }
+}
 
