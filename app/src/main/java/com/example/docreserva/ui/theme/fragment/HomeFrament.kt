@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.foundation.lazy.grid.LazyGridItemSpanScope
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -58,139 +60,142 @@ fun HomeFragment() {
     val boldFontFamily = FontFamily(Font(R.font.montserrat_bold))
     val mediumFontFamily = FontFamily(Font(R.font.montserrat_medium))
 
-    Column(modifier = Modifier.background(color = colorResource(id = R.color.background_color)).verticalScroll(rememberScrollState())) {
-        ConstraintLayout(modifier = Modifier.fillMaxWidth()) {
-            val (profileImage, userName, greeting, notificationIcon, locationIcon, yourLocation, address, searchBox, banner, topDoc, viewAll, lazyListTopDoc) = createRefs()
-            Image(painter = painterResource(id = R.drawable.profileimage),
-                contentDescription = "",
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .constrainAs(profileImage) {
-                        top.linkTo(parent.top, margin = 70.dp)
-                        start.linkTo(parent.start, margin = 20.dp)
-                    }
-                    .size(60.dp)
-                    .clip(CircleShape))
-            Text(
-                text = "hi, Christopher", modifier = Modifier.constrainAs(userName) {
-                    top.linkTo(profileImage.top, margin = 5.dp)
-                    start.linkTo(profileImage.end, margin = 10.dp)
-                }, style = TextStyle(
-                    fontFamily = boldFontFamily,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Normal,
-                    color = colorResource(id = R.color.app_theme_dark_color)
-                )
-            )
-            Text(
-                text = "Good Morning", modifier = Modifier.constrainAs(greeting) {
-                    top.linkTo(userName.bottom, margin = 5.dp)
-                    start.linkTo(userName.start)
-                }, style = TextStyle(
-                    fontFamily = mediumFontFamily,
-                    color = colorResource(id = R.color.app_theme_color)
-                )
-            )
-            Image(painter = painterResource(id = R.drawable.notification_icon),
-                contentDescription = "",
-                Modifier.constrainAs(notificationIcon) {
-                    top.linkTo(userName.top)
+    LazyVerticalGrid(columns = GridCells.Fixed(4),
+        modifier = Modifier
+            .padding(16.dp)
+    ) {
 
-                    end.linkTo(parent.end, 20.dp)
-                })
-            Image(painter = painterResource(id = R.drawable.location_icon),
-                contentDescription = "",
-                modifier = Modifier.constrainAs(locationIcon) {
-                    top.linkTo(notificationIcon.top)
-                    end.linkTo(notificationIcon.start, margin = 15.dp)
-                })
-            Text(text = "Your Location", style = TextStyle(
-                fontFamily = mediumFontFamily, color = colorResource(
-                    id = R.color.gray
-                ), fontSize = 12.sp
-            ), modifier = Modifier.constrainAs(yourLocation) {
-                top.linkTo((locationIcon.top))
-                end.linkTo(locationIcon.start, 10.dp)
-            })
-            Text(text = "West Ham", style = TextStyle(
-                fontFamily = boldFontFamily, color = colorResource(
-                    id = R.color.app_theme_dark_color
-                ), fontSize = 14.sp
-            ), modifier = Modifier.constrainAs(address) {
-                top.linkTo((yourLocation.bottom))
-                end.linkTo(locationIcon.start, 10.dp)
-            })
-            TextField(value = inputvalue.value,
-                onValueChange = { inputvalue.value = it },
-                placeholder = { Text(text = "Eg: “MIMS”", color = Color.Black) },
-                leadingIcon = {
-                    Icon(
-                        imageVector = Icons.Default.Search,
-                        contentDescription = null,
-                        tint = Color.Gray
+        item(span = {
+            GridItemSpan(maxLineSpan)
+        }) {
+            ConstraintLayout(modifier = Modifier.fillMaxWidth()) {
+                val (profileImage, userName, greeting, notificationIcon, locationIcon, yourLocation, address, searchBox, banner, topDoc, viewAll, lazyListTopDoc) = createRefs()
+                Image(painter = painterResource(id = R.drawable.profileimage),
+                    contentDescription = "",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .constrainAs(profileImage) {
+                            top.linkTo(parent.top, margin = 70.dp)
+                            start.linkTo(parent.start, margin = 20.dp)
+                        }
+                        .size(60.dp)
+                        .clip(CircleShape))
+                Text(
+                    text = "hi, Christopher", modifier = Modifier.constrainAs(userName) {
+                        top.linkTo(profileImage.top, margin = 5.dp)
+                        start.linkTo(profileImage.end, margin = 10.dp)
+                    }, style = TextStyle(
+                        fontFamily = boldFontFamily,
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Normal,
+                        color = colorResource(id = R.color.app_theme_dark_color)
                     )
-                },
-                modifier = Modifier
-                    .constrainAs(searchBox) {
-                        top.linkTo(profileImage.bottom, margin = 30.dp)
-                        start.linkTo(profileImage.start)
+                )
+                Text(
+                    text = "Good Morning", modifier = Modifier.constrainAs(greeting) {
+                        top.linkTo(userName.bottom, margin = 5.dp)
+                        start.linkTo(userName.start)
+                    }, style = TextStyle(
+                        fontFamily = mediumFontFamily,
+                        color = colorResource(id = R.color.app_theme_color)
+                    )
+                )
+                Image(painter = painterResource(id = R.drawable.notification_icon),
+                    contentDescription = "",
+                    Modifier.constrainAs(notificationIcon) {
+                        top.linkTo(userName.top)
+
+                        end.linkTo(parent.end, 20.dp)
+                    })
+                Image(painter = painterResource(id = R.drawable.location_icon),
+                    contentDescription = "",
+                    modifier = Modifier.constrainAs(locationIcon) {
+                        top.linkTo(notificationIcon.top)
+                        end.linkTo(notificationIcon.start, margin = 15.dp)
+                    })
+                Text(text = "Your Location", style = TextStyle(
+                    fontFamily = mediumFontFamily, color = colorResource(
+                        id = R.color.gray
+                    ), fontSize = 12.sp
+                ), modifier = Modifier.constrainAs(yourLocation) {
+                    top.linkTo((locationIcon.top))
+                    end.linkTo(locationIcon.start, 10.dp)
+                })
+                Text(text = "West Ham", style = TextStyle(
+                    fontFamily = boldFontFamily, color = colorResource(
+                        id = R.color.app_theme_dark_color
+                    ), fontSize = 14.sp
+                ), modifier = Modifier.constrainAs(address) {
+                    top.linkTo((yourLocation.bottom))
+                    end.linkTo(locationIcon.start, 10.dp)
+                })
+                TextField(value = inputvalue.value,
+                    onValueChange = { inputvalue.value = it },
+                    placeholder = { Text(text = "Eg: “MIMS”", color = Color.Black) },
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.Search,
+                            contentDescription = null,
+                            tint = Color.Gray
+                        )
+                    },
+                    modifier = Modifier
+                        .constrainAs(searchBox) {
+                            top.linkTo(profileImage.bottom, margin = 30.dp)
+                            start.linkTo(profileImage.start)
+                            end.linkTo(notificationIcon.end)
+                            width = Dimension.fillToConstraints
+                        }
+                        .shadow(
+                            elevation = 4.dp, shape = RoundedCornerShape(12.dp), clip = false
+                        )
+                        .height(56.dp)
+                        .background(
+                            color = Color.Transparent, shape = RoundedCornerShape(12.dp)
+                        ), // Set to transparent here
+                    colors = TextFieldDefaults.textFieldColors(
+                        containerColor = Color.White, // Set background color here
+                        focusedIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent,
+                        cursorColor = Color.Black
+                    ),
+                    shape = RoundedCornerShape(12.dp),
+                    singleLine = true)
+                Image(painter = painterResource(id = R.drawable.banner),
+                    contentDescription = "",
+                    modifier = Modifier
+                        .constrainAs(banner) {
+                            top.linkTo(searchBox.bottom, margin = 20.dp)
+                            start.linkTo(parent.start, margin = 7.dp)
+                            end.linkTo(parent.end, margin = 5.dp)
+                            width = Dimension.fillToConstraints
+
+                        }
+                        .fillMaxWidth())
+                Text(
+                    text = "Top Doctors", modifier = Modifier.constrainAs(topDoc) {
+                        top.linkTo(banner.bottom, margin = 20.dp)
+                        start.linkTo(searchBox.start)
+                    }, style = TextStyle(
+                        fontFamily = mediumFontFamily, fontSize = 16.sp, color = colorResource(
+                            id = R.color.black
+                        )
+                    )
+                )
+                Text(
+                    text = "View All", modifier = Modifier.constrainAs(viewAll) {
+                        top.linkTo(topDoc.top)
                         end.linkTo(notificationIcon.end)
-                        width = Dimension.fillToConstraints
-                    }
-                    .shadow(
-                        elevation = 4.dp, shape = RoundedCornerShape(12.dp), clip = false
-                    )
-                    .height(56.dp)
-                    .background(
-                        color = Color.Transparent, shape = RoundedCornerShape(12.dp)
-                    ), // Set to transparent here
-                colors = TextFieldDefaults.textFieldColors(
-                    containerColor = Color.White, // Set background color here
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
-                    cursorColor = Color.Black
-                ),
-                shape = RoundedCornerShape(12.dp),
-                singleLine = true)
-            Image(painter = painterResource(id = R.drawable.banner),
-                contentDescription = "",
-                modifier = Modifier
-                    .constrainAs(banner) {
-                        top.linkTo(searchBox.bottom, margin = 20.dp)
-                        start.linkTo(parent.start, margin = 7.dp)
-                        end.linkTo(parent.end, margin = 5.dp)
-                        width = Dimension.fillToConstraints
-
-                    }
-                    .fillMaxWidth())
-            Text(
-                text = "Top Doctors", modifier = Modifier.constrainAs(topDoc) {
-                    top.linkTo(banner.bottom, margin = 20.dp)
-                    start.linkTo(searchBox.start)
-                }, style = TextStyle(
-                    fontFamily = mediumFontFamily, fontSize = 16.sp, color = colorResource(
-                        id = R.color.black
+                    }, style = TextStyle(
+                        fontFamily = mediumFontFamily,
+                        color = colorResource(id = R.color.app_theme_dark_color)
                     )
                 )
-            )
-            Text(
-                text = "View All", modifier = Modifier.constrainAs(viewAll) {
-                    top.linkTo(topDoc.top)
-                    end.linkTo(notificationIcon.end)
-                }, style = TextStyle(
-                    fontFamily = mediumFontFamily,
-                    color = colorResource(id = R.color.app_theme_dark_color)
-                )
-            )
+            }
         }
 
-        LazyVerticalGrid(columns = GridCells.Fixed(4), // 4 columns in the grid
-            modifier = Modifier
-                .padding(16.dp)
-        ) {
-            items(sampleItems.size) { index ->
-                GridItem(item = sampleItems[index])
-            }
+        items(sampleItems.size) { index ->
+            GridItem(item = sampleItems[index])
         }
     }
 
