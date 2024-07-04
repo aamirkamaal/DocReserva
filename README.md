@@ -31,11 +31,6 @@ This project aims to develop a comprehensive platform where users can explore de
 - Jetpack Compose for a modern and responsive user interface in Android.
 - Kotlin for implementing UI components and logic.
 
-
-### APIs
-- Integration with third-party services for call functionality (e.g., Twilio).
-- RESTful APIs for seamless data exchange between frontend and backend.
-
 ### Security
 - User authentication and authorization.
 - Data encryption to protect sensitive information.
