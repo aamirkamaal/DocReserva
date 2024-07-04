@@ -11,5 +11,6 @@
     <color name="app_theme_dark_color">#174666</color>
     <color name="gray">#A2A0A0</color>
     <color name="background_color">#F5F7F8</color>
+    <color name="blue_550">#2A7FBA</color>
 
 </resources>

@@ -244,7 +244,7 @@ fun ItemDoctorDetails(modifier: Modifier = Modifier) {
             shape = RoundedCornerShape(12.dp)
         )
     ) {
-        val (docProfile, name, docDegree, category, experience,location) = createRefs()
+        val (docProfile, name, docDegree, category, experience,location,txtFee) = createRefs()
         Image(
             painter = painterResource(id = R.drawable.doctor1),
             contentDescription = "",
@@ -330,8 +330,22 @@ fun ItemDoctorDetails(modifier: Modifier = Modifier) {
                 )
             )
 
-
         }
+
+        Text(
+            text = "Consulting fee",
+            modifier = Modifier.constrainAs(txtFee) {
+                top.linkTo(location.bottom,8.dp)
+                start.linkTo(category.start)
+            },
+            style = TextStyle(
+                fontFamily = mediumFontFamily,
+                fontWeight = FontWeight.W400,
+                color = colorResource(id = R.color.blue_550)
+                , fontSize = 18.sp
+                ,
+            )
+        )
     }
 }
 
