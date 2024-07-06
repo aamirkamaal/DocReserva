@@ -137,7 +137,7 @@ class OtpVerificationActivity : ComponentActivity() {
         val themeColor = colorResource(id = R.color.app_theme_color)
         Button(
             onClick = {
-
+HomeActivity.start(this)
             }, colors = ButtonDefaults.buttonColors(containerColor = themeColor), modifier = Modifier
 
                 .padding(
@@ -147,6 +147,7 @@ class OtpVerificationActivity : ComponentActivity() {
 
         ) {
             Text(text = "Verify", modifier = Modifier.padding(vertical = 5.dp))
+
         }
     }
 

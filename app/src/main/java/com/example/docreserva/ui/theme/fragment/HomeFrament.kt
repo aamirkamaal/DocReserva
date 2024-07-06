@@ -72,7 +72,7 @@ fun HomeFragment() {
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .constrainAs(profileImage) {
-                            top.linkTo(parent.top, margin = 70.dp)
+                            top.linkTo(parent.top, margin = 20.dp)
                             start.linkTo(parent.start, margin = 20.dp)
                         }
                         .size(60.dp)

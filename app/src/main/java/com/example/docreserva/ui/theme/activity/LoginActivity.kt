@@ -72,7 +72,7 @@ class LoginActivity : ComponentActivity() {
             Surface(
                 modifier = Modifier.fillMaxSize(), color = Color.White
             ) {
-                HomeFragment()
+                loginView(this)
 
             }
         }

@@ -90,7 +90,7 @@ class RegisterActivity : ComponentActivity() {
 
             )
             Text(
-                text = "Sign Un",
+                text = "Sign Up",
                 modifier = Modifier.padding(start = 20.dp, top = 50.dp),
                 style = TextStyle(
                     fontFamily = boldFontFamily,
