@@ -1,6 +1,6 @@
 package com.example.docreserva.model
 
-data class DocModel(var image:Int,var text:String)
+data class DocModel(var image: Int, var text: String)
 data class DocDetailModel(
     var image: Int,
     var docName: String,

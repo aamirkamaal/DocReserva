@@ -6,9 +6,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -18,7 +15,7 @@ import com.example.docreserva.ui.theme.DocReservaTheme
 class MainActivity : ComponentActivity() {
 
 
-    companion object{
+    companion object {
         @JvmStatic
         fun start(context: Context) {
             val starter = Intent(context, MainActivity::class.java)
@@ -26,6 +23,7 @@ class MainActivity : ComponentActivity() {
             context.startActivity(starter)
         }
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

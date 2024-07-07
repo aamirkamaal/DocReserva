@@ -29,7 +29,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -43,7 +42,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -119,12 +117,24 @@ class OtpVerificationActivity : ComponentActivity() {
             )
             OtpTextField()
             VerifyButton()
-            Row(modifier = Modifier.align(Alignment.CenterHorizontally).padding(top=20.dp))
+            Row(modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .padding(top = 20.dp))
             {
-                Text(text = "didn't received the verification OTP?", style = TextStyle(color = gray, fontFamily = mediumFontFamily, fontSize = 14.sp))
-                Text(text = "Re-send", style = TextStyle(color = Color.Red, fontFamily = mediumFontFamily, fontSize = 14.sp))
+                Text(
+                    text = "didn't received the verification OTP?",
+                    style = TextStyle(color = gray, fontFamily = mediumFontFamily, fontSize = 14.sp)
+                )
+                Text(
+                    text = "Re-send",
+                    style = TextStyle(
+                        color = Color.Red,
+                        fontFamily = mediumFontFamily,
+                        fontSize = 14.sp
+                    )
+                )
             }
-        
+
 
         }
 
@@ -137,8 +147,10 @@ class OtpVerificationActivity : ComponentActivity() {
         val themeColor = colorResource(id = R.color.app_theme_color)
         Button(
             onClick = {
-HomeActivity.start(this)
-            }, colors = ButtonDefaults.buttonColors(containerColor = themeColor), modifier = Modifier
+                HomeActivity.start(this)
+            },
+            colors = ButtonDefaults.buttonColors(containerColor = themeColor),
+            modifier = Modifier
 
                 .padding(
                     paddingValues = PaddingValues(start = 80.dp, end = 80.dp, top = 30.dp)

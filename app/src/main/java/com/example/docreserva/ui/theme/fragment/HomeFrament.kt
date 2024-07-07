@@ -8,10 +8,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
-
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -30,7 +28,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -62,21 +59,63 @@ fun HomeFragment() {
 
 
     val docList = ArrayList<DocDetailModel>()
-    docList.add(DocDetailModel(R.drawable.doctor1,"Dr denies Martine","MBBS, MD","Cardiologist","42 year experience","Apollo hospital, west ham","500","4.4"))
-    docList.add(DocDetailModel(R.drawable.doctor2,"Dr denies Martine","MBBS, MD","Cardiologist","42 year experience","Apollo hospital, west ham","500","4.4"))
-    docList.add(DocDetailModel(R.drawable.doctor3,"Dr denies Martine","MBBS, MD","Cardiologist","42 year experience","Apollo hospital, west ham","500","4.4"))
-    docList.add(DocDetailModel(R.drawable.doctor4,"Dr denies Martine","MBBS, MD","Cardiologist","42 year experience","Apollo hospital, west ham","500","4.4"))
-
-
+    docList.add(
+        DocDetailModel(
+            R.drawable.doctor1,
+            "Dr denies Martine",
+            "MBBS, MD",
+            "Cardiologist",
+            "42 year experience",
+            "Apollo hospital, west ham",
+            "500",
+            "4.4"
+        )
+    )
+    docList.add(
+        DocDetailModel(
+            R.drawable.doctor2,
+            "Dr denies Martine",
+            "MBBS, MD",
+            "Cardiologist",
+            "42 year experience",
+            "Apollo hospital, west ham",
+            "500",
+            "4.4"
+        )
+    )
+    docList.add(
+        DocDetailModel(
+            R.drawable.doctor3,
+            "Dr denies Martine",
+            "MBBS, MD",
+            "Cardiologist",
+            "42 year experience",
+            "Apollo hospital, west ham",
+            "500",
+            "4.4"
+        )
+    )
+    docList.add(
+        DocDetailModel(
+            R.drawable.doctor4,
+            "Dr denies Martine",
+            "MBBS, MD",
+            "Cardiologist",
+            "42 year experience",
+            "Apollo hospital, west ham",
+            "500",
+            "4.4"
+        )
+    )
 
 
     val boldFontFamily = FontFamily(Font(R.font.montserrat_bold))
     val mediumFontFamily = FontFamily(Font(R.font.montserrat_medium))
 
     Column(modifier = Modifier.background(colorResource(id = R.color.background_color))) {
-        LazyVerticalGrid(columns = GridCells.Fixed(4),
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(4),
             modifier = Modifier.background(colorResource(id = R.color.background_color))
-
         ) {
 
             item(span = {
@@ -96,7 +135,7 @@ fun HomeFragment() {
                             .clip(CircleShape))
                     Text(
                         text = "hi, Christopher", modifier = Modifier.constrainAs(userName) {
-                            top.linkTo(profileImage.top, margin =8.dp)
+                            top.linkTo(profileImage.top, margin = 8.dp)
                             start.linkTo(profileImage.end, margin = 10.dp)
                         }, style = TextStyle(
                             fontFamily = boldFontFamily,
@@ -107,7 +146,7 @@ fun HomeFragment() {
                     )
                     Text(
                         text = "Good Morning", modifier = Modifier.constrainAs(greeting) {
-                            top.linkTo(userName.bottom, margin =8.dp)
+                            top.linkTo(userName.bottom, margin = 8.dp)
                             start.linkTo(userName.start)
                         }, style = TextStyle(
                             fontFamily = mediumFontFamily,
@@ -212,24 +251,17 @@ fun HomeFragment() {
                 ItemDoctorCategory(item = sampleItems[index])
             }
 
-
-        }
-        LazyColumn {
-            items(docList.size) { index ->
-
+            items(docList.size, span = {
+                GridItemSpan(maxLineSpan)
+            }) { index ->
                 ItemDoctorDetails(
                     modifier = Modifier
-                        .padding(top=16.dp, start = 16.dp, end = 16.dp)
-                        .fillMaxWidth(),docList[index]
-
-
+                        .padding(top = 16.dp, start = 16.dp, end = 16.dp)
+                        .fillMaxWidth(), docList[index]
                 )
             }
         }
     }
-
-
-
 }
 
 @Composable
@@ -257,7 +289,7 @@ fun ItemDoctorCategory(item: DocModel) {
 }
 
 @Composable
-fun ItemDoctorDetails(modifier: Modifier = Modifier,item:DocDetailModel) {
+fun ItemDoctorDetails(modifier: Modifier = Modifier, item: DocDetailModel) {
     val boldFontFamily = FontFamily(Font(R.font.montserrat_bold))
     val mediumFontFamily = FontFamily(Font(R.font.montserrat_medium))
 
@@ -268,7 +300,7 @@ fun ItemDoctorDetails(modifier: Modifier = Modifier,item:DocDetailModel) {
 
         )
     ) {
-        val (docProfile, name, docDegree, category, experience, location, txtFee, imgStar, ratingValue,txtFeeValue) = createRefs()
+        val (docProfile, name, docDegree, category, experience, location, txtFee, imgStar, ratingValue, txtFeeValue) = createRefs()
         Image(
             painter = painterResource(id = item.image),
             contentDescription = "",
@@ -295,7 +327,7 @@ fun ItemDoctorDetails(modifier: Modifier = Modifier,item:DocDetailModel) {
         Text(
             text = item.degree,
             modifier = Modifier.constrainAs(docDegree) {
-                top.linkTo(name.bottom,8.dp)
+                top.linkTo(name.bottom, 8.dp)
                 start.linkTo(name.start)
             },
             style = TextStyle(
@@ -307,7 +339,7 @@ fun ItemDoctorDetails(modifier: Modifier = Modifier,item:DocDetailModel) {
         Text(
             text = item.docType,
             modifier = Modifier.constrainAs(category) {
-                top.linkTo(docDegree.bottom,8.dp)
+                top.linkTo(docDegree.bottom, 8.dp)
                 start.linkTo(docDegree.start)
             },
             style = TextStyle(
@@ -320,7 +352,7 @@ fun ItemDoctorDetails(modifier: Modifier = Modifier,item:DocDetailModel) {
         Text(
             text = item.exp,
             modifier = Modifier.constrainAs(experience) {
-                top.linkTo(category.bottom,8.dp)
+                top.linkTo(category.bottom, 8.dp)
                 start.linkTo(category.start)
             },
             style = TextStyle(
@@ -332,8 +364,8 @@ fun ItemDoctorDetails(modifier: Modifier = Modifier,item:DocDetailModel) {
         Row(
             modifier = Modifier
                 .constrainAs(location) {
-                    top.linkTo(experience.bottom,8.dp)
-                    start.linkTo(category.start,0.dp)
+                    top.linkTo(experience.bottom, 8.dp)
+                    start.linkTo(category.start, 0.dp)
                 }
 
         ) {
@@ -359,7 +391,7 @@ fun ItemDoctorDetails(modifier: Modifier = Modifier,item:DocDetailModel) {
         Text(
             text = "Consulting fee",
             modifier = Modifier.constrainAs(txtFee) {
-                top.linkTo(location.bottom,8.dp)
+                top.linkTo(location.bottom, 8.dp)
                 start.linkTo(category.start)
             },
             style = TextStyle(
@@ -383,7 +415,7 @@ fun ItemDoctorDetails(modifier: Modifier = Modifier,item:DocDetailModel) {
         Text(
             text = item.rating,
             modifier = Modifier.constrainAs(ratingValue) {
-                top.linkTo(imgStar.bottom,5.dp)
+                top.linkTo(imgStar.bottom, 5.dp)
                 start.linkTo(imgStar.start)
             },
             style = TextStyle(
@@ -394,10 +426,10 @@ fun ItemDoctorDetails(modifier: Modifier = Modifier,item:DocDetailModel) {
             )
         )
         Text(
-            text =item.fee,
+            text = item.fee,
             modifier = Modifier.constrainAs(txtFeeValue) {
                 top.linkTo(txtFee.top)
-                end.linkTo(parent.end,5.dp)
+                end.linkTo(parent.end, 5.dp)
             },
             style = TextStyle(
                 fontFamily = mediumFontFamily,

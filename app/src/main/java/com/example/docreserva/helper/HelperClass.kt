@@ -11,15 +11,14 @@ import com.example.docreserva.model.DocModel
 
 
 @Composable
-fun GetResource()
-{
+fun GetResource() {
     val themeColor = colorResource(id = R.color.app_theme_color)
 
 
 }
+
 @Composable
-fun GetTopDocList(): MutableState<TextFieldValue>
-{
+fun GetTopDocList(): MutableState<TextFieldValue> {
     val inputvalue = remember { mutableStateOf(TextFieldValue()) }
     val sampleItems = ArrayList<DocModel>()
     sampleItems.add(DocModel(R.drawable.general, "General"))
