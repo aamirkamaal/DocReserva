@@ -65,3 +65,13 @@ This project aims to develop a comprehensive platform where users can explore de
 
 ## Conclusion
 This platform will enhance the accessibility and convenience of healthcare services, allowing users to make informed decisions and streamline their interactions with healthcare professionals. The focus on user experience, security, and seamless functionality will ensure a reliable and trusted service for all users.
+
+## Screenshots
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <img src="https://github.com/aamirkamaal/DocReserva/blob/main/app/src/main/java/screenshot/Screenshot_2024-07-06-23-22-38-945_com.example.docreserva.jpg" alt="Screenshot 2" width="200"/>
+    <img src="https://github.com/aamirkamaal/DocReserva/blob/main/app/src/main/java/screenshot/Screenshot_2024-07-06-23-22-44-005_com.example.docreserva.jpg" alt="Screenshot 3" width="200"/>
+    <img src="https://github.com/aamirkamaal/DocReserva/blob/main/app/src/main/java/screenshot/Screenshot_2024-07-06-23-23-29-106_com.example.docreserva.jpg" alt="Screenshot 4" width="200"/>
+    <img src="https://github.com/aamirkamaal/DocReserva/blob/main/app/src/main/java/screenshot/Screenshot_2024-07-06-23-23-55-340_com.example.docreserva.jpg" alt="Screenshot 5" width="200"/>
+    <img src="https://github.com/aamirkamaal/DocReserva/blob/main/app/src/main/java/screenshot/Screenshot_2024-07-06-23-29-09-769_com.example.docreserva.jpg" alt="Screenshot 6" width="200"/>
+</div>
