@@ -54,6 +54,10 @@ fun HomeFragment() {
     sampleItems.add(DocModel(R.drawable.gynecologist, "Gynecologist"))
     sampleItems.add(DocModel(R.drawable.pediatrician, "Pediatrician"))
     sampleItems.add(DocModel(R.drawable.surgeon, "G surgeon"))
+
+
+
+
     val boldFontFamily = FontFamily(Font(R.font.montserrat_bold))
     val mediumFontFamily = FontFamily(Font(R.font.montserrat_medium))
 
@@ -247,7 +251,7 @@ fun ItemDoctorDetails(modifier: Modifier = Modifier) {
 
         )
     ) {
-        val (docProfile, name, docDegree, category, experience, location, txtFee, imgStar, ratingValue) = createRefs()
+        val (docProfile, name, docDegree, category, experience, location, txtFee, imgStar, ratingValue,txtFeeValue) = createRefs()
         Image(
             painter = painterResource(id = R.drawable.doctor1),
             contentDescription = "",
@@ -362,14 +366,27 @@ fun ItemDoctorDetails(modifier: Modifier = Modifier) {
         Text(
             text = "4.5",
             modifier = Modifier.constrainAs(ratingValue) {
-                top.linkTo(imgStar.bottom,8.dp)
+                top.linkTo(imgStar.bottom,5.dp)
                 start.linkTo(imgStar.start)
             },
             style = TextStyle(
                 fontFamily = mediumFontFamily,
                 fontWeight = FontWeight.W400,
                 color = colorResource(id = R.color.black),
-                fontSize = 16.sp,
+                fontSize = 12.sp,
+            )
+        )
+        Text(
+            text = "Rs 450",
+            modifier = Modifier.constrainAs(txtFeeValue) {
+                top.linkTo(txtFee.top)
+                end.linkTo(parent.end,5.dp)
+            },
+            style = TextStyle(
+                fontFamily = mediumFontFamily,
+                fontWeight = FontWeight.W400,
+                color = colorResource(id = R.color.blue_550),
+                fontSize = 14.sp,
             )
         )
     }
