@@ -72,7 +72,7 @@ fun HomeFragment() {
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .constrainAs(profileImage) {
-                            top.linkTo(parent.top, margin = 20.dp)
+                            top.linkTo(parent.top, margin = 40.dp)
                             start.linkTo(parent.start, margin = 20.dp)
                         }
                         .size(60.dp)
@@ -164,7 +164,7 @@ fun HomeFragment() {
                         .constrainAs(banner) {
                             top.linkTo(searchBox.bottom, margin = 20.dp)
                             start.linkTo(parent.start, margin = 7.dp)
-                            end.linkTo(parent.end, margin =8.dp)
+                            end.linkTo(parent.end, margin = 8.dp)
                             width = Dimension.fillToConstraints
 
                         }
@@ -200,10 +200,12 @@ fun HomeFragment() {
 
             ItemDoctorDetails(
                 modifier = Modifier
-                    .padding(16.dp) // Outer padding (like margin)
+                    .padding(16.dp)
+                    .padding(bottom = 50.dp)
                     .fillMaxWidth()
             )
         }
+
     }
 
 
@@ -242,19 +244,20 @@ fun ItemDoctorDetails(modifier: Modifier = Modifier) {
         modifier = modifier.background(
             color = colorResource(id = R.color.white),
             shape = RoundedCornerShape(12.dp)
+
         )
     ) {
-        val (docProfile, name, docDegree, category, experience,location,txtFee) = createRefs()
+        val (docProfile, name, docDegree, category, experience, location, txtFee, imgStar, ratingValue) = createRefs()
         Image(
             painter = painterResource(id = R.drawable.doctor1),
             contentDescription = "",
             modifier = Modifier
                 .constrainAs(docProfile) {
                     top.linkTo(parent.top, 20.dp)
-                    start.linkTo(parent.start, 10.dp)
                     bottom.linkTo(parent.bottom, 20.dp)
                 }
                 .size(150.dp)
+
         )
         Text(
             text = "Dr denies Martine",
@@ -341,11 +344,36 @@ fun ItemDoctorDetails(modifier: Modifier = Modifier) {
             style = TextStyle(
                 fontFamily = mediumFontFamily,
                 fontWeight = FontWeight.W400,
-                color = colorResource(id = R.color.blue_550)
-                , fontSize = 18.sp
-                ,
+                color = colorResource(id = R.color.blue_550),
+                fontSize = 16.sp,
+            )
+        )
+        Image(
+            painter = painterResource(id = R.drawable.star),
+            contentDescription = "",
+            modifier = Modifier
+                .constrainAs(imgStar) {
+                    end.linkTo(parent.end, 10.dp)
+                    top.linkTo(name.top)
+                }
+                .size(20.dp)
+        )
+
+        Text(
+            text = "4.5",
+            modifier = Modifier.constrainAs(ratingValue) {
+                top.linkTo(imgStar.bottom,8.dp)
+                start.linkTo(imgStar.start)
+            },
+            style = TextStyle(
+                fontFamily = mediumFontFamily,
+                fontWeight = FontWeight.W400,
+                color = colorResource(id = R.color.black),
+                fontSize = 16.sp,
             )
         )
     }
 }
+
+
 
