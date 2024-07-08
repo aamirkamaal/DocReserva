@@ -1,5 +1,6 @@
 package com.example.docreserva.ui.theme.activity
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -16,7 +17,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.docreserva.R
+import com.example.docreserva.helper.NavigationStack
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -31,22 +34,23 @@ class SplashActivity : ComponentActivity() {
                 modifier = Modifier.fillMaxSize(),
                 color = Color(0xFF248479)
             ) {
-                splashScreenView()
+                NavigationStack(this)
 
             }
         }
-        CoroutineScope(Dispatchers.Main).launch {
-            delay(2000)
-            LoginActivity.start(this@SplashActivity)
-            finish()
-        }
+
     }
 
 
 }
 
+@SuppressLint("CoroutineCreationDuringComposition")
 @Composable
-private fun splashScreenView() {
+ fun SplashScreenView(navController: NavController) {
+    CoroutineScope(Dispatchers.Main).launch {
+        delay(2000)
+
+    }
     Column {
         Image(
             painter = painterResource(id = R.drawable.app_logo),
@@ -67,8 +71,3 @@ private fun splashScreenView() {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    splashScreenView()
-}

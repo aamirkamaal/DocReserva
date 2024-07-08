@@ -78,7 +78,7 @@ class LoginActivity : ComponentActivity() {
 }
 
 @Composable
-fun loginView(context: Context) {
+fun LoginView(context: Context) {
     val boldFontFamily = FontFamily(Font(R.font.montserrat_bold))
     val mediumFontFamily = FontFamily(Font(R.font.montserrat_medium))
     val email = remember { mutableStateOf(TextFieldValue()) }
@@ -133,7 +133,7 @@ fun loginView(context: Context) {
                 text = "Register",
                 modifier = Modifier
                     .padding(start = 2.dp)
-                    .clickable { RegisterActivity.start(context) },
+                    .clickable {  },
                 style = TextStyle(
                     fontFamily = boldFontFamily,
                     fontSize = 14.sp,
