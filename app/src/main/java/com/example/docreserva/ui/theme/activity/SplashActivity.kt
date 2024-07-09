@@ -47,6 +47,8 @@ class SplashActivity : ComponentActivity() {
 @SuppressLint("CoroutineCreationDuringComposition")
 @Composable
  fun SplashScreenView(navController: NavController) {
+
+
     CoroutineScope(Dispatchers.Main).launch {
         delay(2000)
 
