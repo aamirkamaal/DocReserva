@@ -51,6 +51,7 @@ class SplashActivity : ComponentActivity() {
 
     CoroutineScope(Dispatchers.Main).launch {
         delay(2000)
+        navController.navigate(NavigationStack.Login.route)
 
     }
     Column {
